@@ -62,3 +62,7 @@ main h2 {
 main p {
   background-color: white;;
 }
+.btn {
+  padding: 10px 30px;
+  margin: 40px;
+}
