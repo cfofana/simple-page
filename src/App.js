@@ -20,7 +20,24 @@ function MyForm(){
   );
 }
 
+
+function TestComponent(){
+  return (
+    <div>
+      <h1>Hi there</h1>
+      <p>Components can't return multiple JSX tags. <code><></></code></p>
+    </div>
+  );
+}
+
+
+
 function App() {
+  const user = {
+    name: 'Hedy Lamarr',
+    imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
+    imageSize: 90,
+  };
   return (
     <div className="container">
       <header>
@@ -32,6 +49,17 @@ function App() {
       </main>
       <MyButton />
       <MyForm />
+      <TestComponent />
+      <h3>{user.name}</h3>
+      <img 
+        src={user.imageUrl} 
+        className="avatar" 
+        alt={'Photo of '+user.name} 
+        style={{
+          width: user.imageSize,
+          height: user.imageSize,
+          borderRadius: 30
+        }} />
     </div>
     // <div className="App">
     //   <header className="App-header">
