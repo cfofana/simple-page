@@ -1,4 +1,5 @@
 import './App.css';
+import { useState } from 'react';
 
 
 const products = [
@@ -9,7 +10,23 @@ const products = [
 
 function MyButton(){
   return (
-    <button className="btn">This is a button</button>
+    <button className="btn" onClick={handleClicks}>Click me</button>
+  );
+  function handleClicks(){
+    alert('You clicked me.');
+  }
+}
+
+
+function TestButton(){
+  const [count, setCount] = useState(0);
+  function increase(){
+    setCount(count + 1);
+  }
+  return (
+    <div class="container">
+      <button className="btn" onClick={increase}>Clicked {count} times</button>
+    </div>
   );
 }
 
@@ -48,7 +65,11 @@ function App() {
   const listItems = products.map(product =>
     <li key={product.id}>{product.title}</li>);
 
-  
+  const [counter, setCounter] = useState(0);
+  function increment(){
+      setCounter(counter + 1);
+    }
+
   return (
     <div className="container">
       <header>
@@ -72,9 +93,24 @@ function App() {
           borderRadius: 30
         }} />
         <ul>{listItems}</ul>
+        <BtnCounter counter={counter} onClick={increment}/>
+        <BtnCounter counter={counter} onClick={increment}/>
+        <div className="notSharedCount">
+          <TestButton />
+          <TestButton />
+        </div>
+        
     </div>
     
   );
 }
 
 export default App;
+
+function BtnCounter({counter, onClick}){ 
+  return (
+    <div>
+      <button className="btn" onClick={onClick}>Clicked {counter} times</button>
+    </div>
+  );
+}
